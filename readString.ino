@@ -11,8 +11,8 @@ const byte numChars = 32;
 float velocityRight = 0.0;
 float velocityLeft = 0.0;
 
-float max_vel = 50;
-float min_vel = -50;
+float max_vel = 1500;
+float min_vel = -1500;
 
 int pwmSignal1;
 int pwmSignal2;
