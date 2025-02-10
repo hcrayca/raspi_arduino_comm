@@ -33,9 +33,9 @@ joystick = pygame.joystick.Joystick(0)
 joystick.init()
 
 # Initialize motor speed variables
-max_velocity = 50
-min_velocity = -50
-dead_zone = 0.1
+max_velocity = 367
+min_velocity = -362
+dead_zone = 0.2
 
 def get_velocity(y_axis_position_right, y_axis_position_left):
     if abs(y_axis_position_right) < dead_zone and abs(y_axis_position_left) < dead_zone:
@@ -60,7 +60,7 @@ def send_data():
 
         try:
             if ser and ser.is_open:
-                data = f"{velocity_right:.2f},{velocity_left:.2f}"
+                data = f"{velocity_right:.1f},{velocity_left:.1f}\n"
                 #print(data)
                 ser.write(data.encode())
                 ser.flush()
