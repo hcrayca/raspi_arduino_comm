@@ -51,20 +51,27 @@ void receiveData() {
       String leftStr = receivedData.substring(commaIndex + 1);
 
       // Convert to float
-      float velocity_right = rightStr.toFloat();
-      float velocity_left = leftStr.toFloat();
+      velocityRight = rightStr.toFloat();
+      velocityLeft = leftStr.toFloat();
 
-      // Print results
-    
-      Serial.println(velocity_right, 2);
-      Serial.println(velocity_left, 2);
+      if(velocityRight != 0.0 || velocityLeft != 0.0){
+
+        velocityRight = velocityRight-1.4;
+        velocityLeft = velocityLeft-1.4;
+      }
+
+      String data = String(velocityRight) + "," + String(velocityLeft);
+      data.trim();
+      Serial.println(data);
+      newData = true;
   }
   else {
     Serial.println("Error: Invalid data format");
         }
         
-  Serial.flush();
-  newData = true;
+  delay(100);
+  
+  while (Serial.available()) Serial.read();  // Clears remaining buffer
   }
   
 }
